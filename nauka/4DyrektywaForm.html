@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <style>
+    .my-form.ng-invalid{
+        background: red;
+    }
+
+    .my-form.ng-valid{
+        background: green;
+    }
+    </style>
+</head>
+
+
+<body >
+
+  <form name="myForm">
+Imie: <input name="input" ng-model="name" required class="my-form">
+<span class="error" ng-show="myForm.input.$error.required">Pole wymagane !</span></br>
+<code>Imie - {{name}}</code>
+<code>myForm.input.$vaild = {{myForm.input.$valid}}</code></br>
+<code>myForm.input.$error = {{myForm.input.$error}}</code></br>
+<code>myForm.$vaild = {{myForm.$valid}}</code></br>
+
+  </form>
+<script src = "bower_components/angular/angular.js"></script>
+
+<script >
+var app = angular.module("app",[]);
+
+
+</script>
+</body>
+</html>

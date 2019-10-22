@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+   
+</head>
+<body ng-controller="DbCrtl">
+
+  <div >
+      <button ng-click="changeColor($event)">Zmien kolor <span class="glyphicon glyphicon-refresh" ></span></button>
+      <p>Pojedyncze bindowanie: {{:: color}}</p>
+      <p>Podwójne bindowanie: {{color}}</p>
+  </div>
+
+      {{x}}
+      {{y}}
+      {{timestamp}}
+  </div>
+  <div>
+<script src = "bower_components/angular/angular.js"></script>
+
+<script >
+var app = angular.module("app",[]);
+
+app.controller("DbCrtl", function($scope){
+    var colors = ['red', 'blue', 'black', 'yellow'];
+var i =0;
+    $scope.changeColor =   function(clickEvent){
+        console.log(clickEvent);
+        $scope.color = colors[i % colors.length];
+        i++;
+
+        $scope.x = clickEvent.x;
+        $scope.y = clickEvent.y;
+        $scope.timestamp = clickEvent.timeStamp;
+    };
+});
+</script>
+</body>
+</html>

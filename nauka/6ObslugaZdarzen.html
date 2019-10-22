@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+
+<body ng-controller="StartCtrl" >
+        <body ng-controller="StartCtrl" >
+                <div start-dir>
+            
+                </div>
+<script src = "bower_components/angular/angular.js"></script>
+
+
+<script >
+var app = angular.module("app",[]);
+
+app.controller("StartCtrl",['$scope', function($scope){
+$scope.myTable = [
+    {name: 'Ala', city: 'Radom'},
+    {name: 'Ola', city: 'Warszawa'},
+    {name: 'Ela', city: 'Krakow'},
+    {name: 'Marek', city: 'Lublin'},
+];
+
+
+
+}]);
+
+app.directive("startDir",[function(){
+
+return{
+    scope:{}, //wyizolowanie dyrektyw, kazda bedzie sie odnosić do innego scope,dyrektywy nie widzą sie nawzajem
+    //scope:true,
+    templateUrl:'6start-tmp.html',
+    controller: function($scope){
+        $scope.add= function(name,city){
+    $scope.myTable.push({'name':name, 'city':city})
+};
+    }
+};
+
+}]);
+
+
+</script>
+</body>
+</html>

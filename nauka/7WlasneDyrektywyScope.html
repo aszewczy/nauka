@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+</head>
+
+
+<body ng-controller="StartCtrl" >
+        <body ng-controller="StartCtrl" >
+                <div start-dir table="table">
+            
+                </div>
+
+
+                <div start-dir table="table1">
+            
+                    </div>
+<script src = "bower_components/angular/angular.js"></script>
+
+
+<script >
+var app = angular.module("app",[]);
+
+app.controller("StartCtrl",['$scope', function($scope){
+$scope.table = [
+    {name: 'Ala', city: 'Radom'},
+    {name: 'Ola', city: 'Warszawa'},
+    {name: 'Ela', city: 'Krakow'},
+    {name: 'Marek', city: 'Lublin'},
+];
+
+$scope.table1 = [
+    {name: 'Ala2', city: 'Radom'},
+    {name: 'Ola2', city: 'Warszawa'},
+    {name: 'Ela2', city: 'Krakow'},
+    {name: 'Marek2', city: 'Lublin'},
+];
+
+
+}]);
+
+app.directive("startDir",[function(){
+
+return{
+    scope:{table:'='}, //wyizolowanie dyrektyw, kazda bedzie sie odnosić do innego scope,dyrektywy nie widzą sie nawzajem
+    //scope:true,
+    templateUrl:'7start-tmp.html',
+    controller: function($scope){
+        $scope.add= function(name,city){
+    $scope.table.push({'name':name, 'city':city})
+};
+
+$scope.removePerson= function(index){
+   if(index>-1){
+       $scope.table.splice(index,1);
+   }
+};
+    }
+};
+
+}]);
+
+
+
+///KOlejna dyrektywa
+
+app.directive("remPerson",[function(){
+
+return{
+  $scope:{
+      rem:'&method'
+  },
+    templateUrl:'7rem-person.html',
+controller: function($scope){
+    $scope.remove = function(){
+        $scope.rem();
+    }
+}
+};
+
+}]);
+
+
+</script>
+</body>
+</html>

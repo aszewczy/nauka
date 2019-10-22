@@ -1,0 +1,19 @@
+<div>
+    <ul>
+        <li ng-repeat="item in table">
+            Imie: {{item.name}},  miasto: {{item.city}} 
+
+
+             <rem-person></rem-person>
+        </li>
+      
+    </ul>
+</div>
+
+<div>
+Imie: <input ng-model="name" class="form-control" />
+
+Miejscowosc: <input ng-model="city" class="form-control" />
+
+<a class="btn btn-danger" ng-click="add(name,city); name='';city=''">Dodaj</a>
+</div>
